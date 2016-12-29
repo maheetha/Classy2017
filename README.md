@@ -10,11 +10,13 @@ BRCA.TP53.cna -- CNA data for TP53 from BRCA Cancer Data
 
 BRCA.TP53.exp -- EXP data for TP53 from BRCA Cancer Data
 
-The directory also contains supplementary files: 
+TP53.bedfile -- a sample bed file
 
-bed_file -- a sample bed file
+Note: the BRCA.TP53.cna contains all samples from the BRCA cancer type, however, the bedfile contains only TP53. When you run intersect_bed_cna.sh, please make sure that the intersected file only has TP53. 
 
-MuSic_Matrix -- a matrix provided by MuSic that can tell us which cancer types to aggregate data from. This is completely optional, and was the method we used to filter our data for irrelevant noise. 
+The directory also contains optional supplementary files: 
+
+MuSic_Matrix_Test -- a matrix provided by MuSic that can tell us which cancer types to aggregate data from. This is completely optional, and was the method we used to filter our data for irrelevant noise. 
 
 trainingdata -- this is the training data that one could use for classification 
 
@@ -117,6 +119,9 @@ USAGE:
 INPUT: traininggenes (or trainingdata), a MAF counts file, a CNA counts file, and a RSEM counts file. 
 OUTPUT: A merged data frame with all genes, their features, and classfications
 
+# Miscellaneous Files
+
+The miscellaneous directory contains files that were used to loop through multiple cancer type initially. We wish to present this as full transparency about all the scripts we use, but we do not intend this to be downloaded and used. 
 
 #Questions: 
 
