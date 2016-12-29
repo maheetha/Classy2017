@@ -5,50 +5,49 @@ The purpose of CLASSY is to extract and synthesize important biological imformat
 The test_data directory has three test files:
 
 BRCA.TP53.maf -- MAF data for TP53 from BRCA Cancer Data
+
 BRCA.TP53.cna -- CNA data for TP53 from BRCA Cancer Data
+
 BRCA.TP53.exp -- EXP data for TP53 from BRCA Cancer Data
 
 The directory also contains supplementary files: 
 
 bed_file -- a sample bed file
+
 MuSic_Matrix -- a matrix provided by MuSic that can tell us which cancer types to aggregate data from. This is completely optional, and was the method we used to filter our data for irrelevant noise. 
 
 # MAF DATA ANALYSIS
 
 get_maf_samples.sh
+The purpose of this script is to take maf files, and get a list of genes and their samples that are mutated in this particular maf. Takes in an input maf file, a sample index (usually field 12 in a MAF), a gene index (usually the first field in a MAF file), and a mutation type index (usually field 9 in a MAF file). Note: Please derive the indicies from your MAF file for use in this script.
 
    USAGE:
    
        bash get_maf_samples.sh -i BRCA.TP53.maf -s 12 -g 1 -m 9
+       
+   INPUT FILE: BRCA.TP53.maf
+   
+   OUTPUT FILE: BRCA.TP53.maf.mutatedsamples
+   
+parse_maf_file.pl
+The purpose of this script is to extract mutation data from MAF files. Particularly we are interested in the number of truncating (Loss of Function) mutations, number of recurrent missense mutations at the codon specific level, and the number of recurrent domain mutations. NOTE: Please derive the indices from your MAF file for use in this script.
 
-SECOND COMMANDLINE EXECUTION:
-bash mergerecur.sh -- if the files coming from createMAFinput.sh are named differently, you might want to edit the script
+   USAGE:
+   
+       perl parse_maf_file.pl --maf_file=BRCA.TP53.maf --gene_index=0 --mut_index=8 --sample_index=15 --codon_index=41 --domain_index=45
 
-THIRD COMMANDLINE EXECUTION:
-Rscript mergemafdata.R list_of_all_cancers_that_you_have_maf_data_for 
-
-FOURTH COMMANDLINE EXECUTION:
-bash filtermaf.sh
-
+   INPUT FILE: BRCA.TP53.maf
+   
+   OUTPUT FILE: BRCA.TP53.maf.output
 
 
-********FOR GENE EXPRESSION FILES********
+# GENE EXPRESSION ANALYSIS
 
-FIRST COMMANDLINE EXECUTION
-bash transform.sh 
+parse_expression_file.R
 
-SECOND COMMANLINE EXECUTION
-bash transform2.sh 
+USAGE:
 
-THIRD COMMANDLINE EXECUTION
-bash transpose3.sh 
-
-FOURTH COMMANDLINE EXECUTION
-bash geneExpression.sh
-
-FIFTH COMMANDLINE EXECUTION
-bash filtergeneexp.sh
-
+      Rscript parse_expression_file.R BRCA.TP53.exp BRCA.TP53.mutatedsamples BRCA
 
 
 
