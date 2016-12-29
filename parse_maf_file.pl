@@ -12,17 +12,17 @@ use File::Basename;
 use Statistics::R;
 use Cwd;
 
-#################################################################################################
-#################################################################################################
-##########The purpose of this script is to extract various information from a MAF file###########
-##########From the MAF file, we hope to count the total number of inactivation mutations#########
-##########as well as the number of recurrent missense mutations amino-acid specific##############
-##########as well as at the domain-specific level. After this script, each MAF file##############
-##########should have a *.trunc, *.recur, and a *.missensedomains file with it ##################
-##########The .recur and .missensedomains file will be analyzed mergerecur.py ###################
-########## which will result in counts for these features.#######################################
-#################################################################################################
-#################################################################################################
+##################################################################################################
+##################################################################################################
+########## The purpose of this script is to extract various information from a MAF file###########
+########## From the MAF file, we hope to count the total number of inactivation mutations#########
+########## as well as the number of recurrent missense mutations amino-acid specific##############
+########## as well as at the domain-specific level. After this script you should have ############
+########## a file under the name of [mafname].output. The script takes in an input file ##########
+########## and various indices. Please ensure you use the correct indices according ##############
+########## to your maf file.######################################################################
+##################################################################################################
+##################################################################################################
 
 ##### SET UP USAGE ######
 my $USAGE =<<USAGE;
