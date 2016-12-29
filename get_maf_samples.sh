@@ -3,8 +3,7 @@
 
 << COMMENTS
 
-The purpose of this script is to take a directory of MAF (Mutation Annotation Files) and creates a file that contains truncative, recurrent, and domain-specific mutations.
-
+The purpose of this script is to take maf files, and get a list of genes and their samples that are mutated in this particular maf. 
 
 COMMENTS
 
