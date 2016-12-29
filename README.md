@@ -16,7 +16,9 @@ bed_file -- a sample bed file
 
 MuSic_Matrix -- a matrix provided by MuSic that can tell us which cancer types to aggregate data from. This is completely optional, and was the method we used to filter our data for irrelevant noise. 
 
-training_data -- this is the training data that one could use for classification 
+trainingdata -- this is the training data that one could use for classification 
+
+traininggenes -- this is a compilation of genes we selected for our training set 
 
 # MAF DATA ANALYSIS
 
