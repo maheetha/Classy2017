@@ -84,11 +84,12 @@ for (x in 3:(size-1)){
 
 
 ## Writing to output ####
-name2 = paste(args[4], "meannonmutate", sep = ".")
-name3 = paste(args[4], "meanmutate", sep = ".")
-title = paste("Gene", name2, name3, sep = "\t")
+nonmutatename = paste(args[3], "meannonmutate", sep = ".")
+mutatename = paste(args[3], "meanmutate", sep = ".")
+filename = paste(args[3], "rsem", sep = ".")
+title = paste("Gene", nonmutatename, mutatename, sep = "\t")
 final_table = c(title, final_table)
-write.table(final_table, args[3], row.names = F, col.names = F, quote = F, sep = "\t")
+write.table(final_table, filename, row.names = F, col.names = F, quote = F, sep = "\t")
 
 
 
